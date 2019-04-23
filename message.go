@@ -2,9 +2,7 @@ package vivopush
 
 import (
 	"encoding/json"
-	// "strconv"
 	"strings"
-	// "time"
 
 	gouuid "github.com/satori/go.uuid"
 )
@@ -27,16 +25,6 @@ type Message struct {
 const (
 	MaxTimeToLive = 3600 * 24
 )
-
-// func (m *Message) SetRestrictedPackageName(restrictedPackageNames []string) *Message {
-// 	m.RestrictedPackageName = strings.Join(restrictedPackageNames, ",")
-// 	return m
-// }
-
-// func (m *Message) SetPassThrough(passThrough int32) *Message {
-// 	m.PassThrough = passThrough
-// 	return m
-// }
 
 func (m *Message) SetNotifyType(notifyType int) *Message {
 	m.NotifyType = notifyType
@@ -65,7 +53,7 @@ func NewVivoMessage(title, content string) *Message {
 		Title:           title,
 		Content:         content,
 		TimeToLive:      MaxTimeToLive,
-		SkipType:        4,
+		SkipType:        1,
 		SkipContent:     "",
 		NetworkType:     -1,
 		ClientCustomMap: make(map[string]string),

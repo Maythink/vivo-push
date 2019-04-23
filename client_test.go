@@ -2,20 +2,21 @@ package vivopush
 
 import (
 	"testing"
-	// "time"
 )
 
-var packageName string = "sbkssbkssbkssbkssbkssbkssbkssbks"
-
-var client = NewClient("sbkssbkssbkssbkssbkssbkssbkssbks")
+var appId string = "11984"
+var appKey string = "e6611c0e-851a-46df-87da-149f9cc50c93"
+var appSecret string = "6fdb2a63-6c7a-4e98-bbf7-c89c47b789ac"
 
 var msg1 *Message = NewVivoMessage("hi baby1", "hi1")
-var msg2 *Message = NewVivoMessage("hi baby2", "hi2 ")
 
-var regID1 string = "WFioJi0fiIco7vOrI4dnxxjeKAUqR7fjugoGkHUgxeo="
-var regID2 string = "52Pe7fPIRXWsXhzn4eYJ1njYhBhN8Lcp8IJPOMjThdk="
+var regID1 string = "15559958796931198455743"
 
 func TestMiPush_Send(t *testing.T) {
+	client, err := NewClient(appId, appKey, appSecret)
+	if err != nil {
+		t.Errorf("TestMiPush_Send failed :%v\n", err)
+	}
 	result, err := client.Send(msg1, regID1)
 	if err != nil {
 		t.Errorf("TestMiPush_Send failed :%v\n", err)
@@ -24,7 +25,11 @@ func TestMiPush_Send(t *testing.T) {
 }
 
 func TestMiPush_GetMessageStatusByJobKey(t *testing.T) {
-	result, err := client.GetMessageStatusByJobKey("key111")
+	client, err := NewClient(appId, appKey, appSecret)
+	if err != nil {
+		t.Errorf("TestMiPush_Send failed :%v\n", err)
+	}
+	result, err := client.GetMessageStatusByJobKey("570247239105613824")
 	if err != nil {
 		t.Errorf("TestMiPush_GetMessageStatusByJobKey failed :%v\n", err)
 	}

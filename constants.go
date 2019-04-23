@@ -11,5 +11,5 @@ const (
 )
 
 var (
-	PostRetryTimes = 3
+	PostRetryTimes = 3 //重试次数
 )
